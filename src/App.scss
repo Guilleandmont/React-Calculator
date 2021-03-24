@@ -1,0 +1,52 @@
+$main-color: #191919;
+$primary-color: #272635;
+$secondary-color: #322633;
+$contrast-color: #ae50b6;
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fcfcfc;
+    background-color: #25252a;
+    height: 100vh;
+}
+
+main {
+    background-color: $main-color;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(5, auto);
+    height: 640px;
+    min-width: 360px;
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primary-color;
+        font-size: 28px;
+    }
+
+    .display {
+        justify-content: right;
+        align-items: flex-end;
+        grid-column: 1 / span 4;
+        padding: 16px;
+        background-color: $main-color;
+    }
+
+    .operation {
+        background-color: $secondary-color;
+    }
+
+    #zero {
+        grid-column: 1 / span 2;
+    }
+
+    #equals {
+        grid-row: span 2;
+        background-color: $contrast-color;
+    }
+}
