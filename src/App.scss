@@ -27,6 +27,7 @@ main {
         align-items: center;
         background-color: $primary-color;
         font-size: 28px;
+        cursor: pointer;
     }
 
     .display {
@@ -35,10 +36,21 @@ main {
         grid-column: 1 / span 4;
         padding: 16px;
         background-color: $main-color;
+        cursor: text;
     }
 
     .operation {
         background-color: $secondary-color;
+
+        &:active {
+            background-color: $contrast-color;
+            transition: all 0.3s ease;
+        }
+    }
+
+    .number:active {
+        background-color: $contrast-color;
+        transition: all 0.3s ease;
     }
 
     #zero {

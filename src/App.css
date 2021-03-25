@@ -34,6 +34,7 @@ main div {
           align-items: center;
   background-color: #272635;
   font-size: 28px;
+  cursor: pointer;
 }
 main .display {
   -webkit-box-pack: right;
@@ -45,9 +46,20 @@ main .display {
   grid-column: 1/span 4;
   padding: 16px;
   background-color: #191919;
+  cursor: text;
 }
 main .operation {
   background-color: #322633;
+}
+main .operation:active {
+  background-color: #ae50b6;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+main .number:active {
+  background-color: #ae50b6;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 main #zero {
   grid-column: 1/span 2;
