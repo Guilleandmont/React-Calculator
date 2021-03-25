@@ -1,7 +1,7 @@
 $main-color: #191919;
-$primary-color: #272635;
-$secondary-color: #322633;
-$contrast-color: #ae50b6;
+$primary-color: #2d2d34;
+$secondary-color: #3f1f40;
+$contrast-color: #af3eb9;
 
 body {
     display: flex;
@@ -14,51 +14,21 @@ body {
 
 main {
     background-color: $main-color;
-    display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(5, auto);
-    height: 640px;
-    min-width: 360px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-family: Ubuntu, sans-serif;
 
-    div {
+    & .display-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $primary-color;
-        font-size: 28px;
-        cursor: pointer;
-    }
-
-    .display {
-        justify-content: right;
+        justify-content: flex-end;
         align-items: flex-end;
-        grid-column: 1 / span 4;
-        padding: 16px;
-        background-color: $main-color;
-        cursor: text;
+        height: 10rem;
     }
 
-    .operation {
-        background-color: $secondary-color;
-
-        &:active {
-            background-color: $contrast-color;
-            transition: all 0.3s ease;
-        }
-    }
-
-    .number:active {
-        background-color: $contrast-color;
-        transition: all 0.3s ease;
-    }
-
-    #zero {
-        grid-column: 1 / span 2;
-    }
-
-    #equals {
-        grid-row: span 2;
-        background-color: $contrast-color;
+    & .grid-container {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(4, minmax(3rem, 8rem));
     }
 }

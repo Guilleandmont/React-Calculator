@@ -9,9 +9,25 @@ import {
     FaTimes,
 } from "react-icons/fa";
 
+const Numbers = () => {
+    const numbers = Array(10).fill(null);
+    return numbers.map((i, index) => (
+        <div key="index" className="number">
+            {index}
+        </div>
+    ));
+};
+
 class App extends React.Component {
     render() {
-        return <div>Nothing at all</div>;
+        return (
+            <main>
+                <div className="display-container">{3 + 5 * 6 - 2 / 4}</div>
+                <div className="grid-container">
+                    <Numbers />
+                </div>
+            </main>
+        );
     }
 }
 
