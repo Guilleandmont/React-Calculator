@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import Numbers from "./Numbers";
+import Operations from "./Operations";
 import {
     FaBackspace,
     FaDivide,
@@ -8,26 +10,6 @@ import {
     FaPlus,
     FaTimes,
 } from "react-icons/fa";
-
-const Numbers = ({ symbol, id, onClick }) => {
-    return (
-        <div className="button" id={id} onClick={() => onClick(symbol)}>
-            {symbol}
-        </div>
-    );
-};
-
-const Operations = ({ symbol, id, onClick, operation }) => {
-    return (
-        <div
-            className="button operation"
-            id={id}
-            onClick={() => onClick(operation)}
-        >
-            {symbol}
-        </div>
-    );
-};
 
 class App extends React.Component {
     constructor(props) {
