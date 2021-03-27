@@ -49,6 +49,7 @@ main .display-container .operation {
 main .grid-container {
   display: grid;
   gap: 0.5rem;
+  grid-template-areas: "C B d m" "7 8 9 r" "4 5 6 s" "1 2 3 x" "z z p x";
   grid-template-columns: repeat(4, minmax(3rem, 6rem));
   grid-template-rows: repeat(5, minmax(3rem, 6rem));
 }
@@ -74,4 +75,17 @@ main .grid-container .button:active {
   background-color: #af3eb9;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
+}
+main .grid-container .operation {
+  background-color: #3f1f40;
+}
+main .grid-container #zero {
+  grid-area: z;
+}
+main .grid-container #equals {
+  background-color: #af3eb9;
+  grid-area: x;
+}
+main .grid-container #equals:active {
+  background-color: #191919;
 }

@@ -40,6 +40,12 @@ main {
     & .grid-container {
         display: grid;
         gap: 0.5rem;
+        grid-template-areas:
+            "C B d m"
+            "7 8 9 r"
+            "4 5 6 s"
+            "1 2 3 x"
+            "z z p x";
         grid-template-columns: repeat(4, minmax(3rem, 6rem));
         grid-template-rows: repeat(5, minmax(3rem, 6rem));
 
@@ -55,6 +61,23 @@ main {
             &:active {
                 background-color: $contrast-color;
                 transition: all 0.25s;
+            }
+        }
+
+        & .operation {
+            background-color: $secondary-color;
+        }
+
+        & #zero {
+            grid-area: z;
+        }
+
+        & #equals {
+            background-color: $contrast-color;
+            grid-area: x;
+
+            &:active {
+                background-color: $main-color;
             }
         }
     }
