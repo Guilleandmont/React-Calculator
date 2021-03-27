@@ -22,13 +22,16 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-size: 1.5rem;
   font-family: Ubuntu, sans-serif;
 }
 main .display-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -36,9 +39,39 @@ main .display-container {
       -ms-flex-align: end;
           align-items: flex-end;
   height: 10rem;
+  padding: 2rem;
+  font-size: 2.5rem;
+}
+main .display-container .operation {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 main .grid-container {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(4, minmax(3rem, 8rem));
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, minmax(3rem, 6rem));
+  grid-template-rows: repeat(5, minmax(3rem, 6rem));
+}
+main .grid-container .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #2d2d34;
+  font-size: 2rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+main .grid-container .button:active {
+  background-color: #af3eb9;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }

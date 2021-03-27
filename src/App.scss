@@ -16,19 +16,46 @@ main {
     background-color: $main-color;
     display: flex;
     flex-direction: column;
-    font-size: 1.5rem;
+
     font-family: Ubuntu, sans-serif;
 
     & .display-container {
         display: flex;
+        flex-direction: column;
         justify-content: flex-end;
         align-items: flex-end;
         height: 10rem;
+        padding: 2rem;
+        font-size: 2.5rem;
+
+        .result {
+        }
+
+        .operation {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
     }
 
     & .grid-container {
         display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(4, minmax(3rem, 8rem));
+        gap: 0.5rem;
+        grid-template-columns: repeat(4, minmax(3rem, 6rem));
+        grid-template-rows: repeat(5, minmax(3rem, 6rem));
+
+        & .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $primary-color;
+            font-size: 2rem;
+            user-select: none;
+            cursor: pointer;
+
+            &:active {
+                background-color: $contrast-color;
+                transition: all 0.25s;
+            }
+        }
     }
 }
