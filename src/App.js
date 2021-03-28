@@ -10,6 +10,7 @@ import {
     FaPlus,
     FaTimes,
 } from "react-icons/fa";
+import handleCalc from "./mathLogic";
 
 class App extends React.Component {
     constructor(props) {
@@ -56,7 +57,7 @@ class App extends React.Component {
             this.setState((state) => ({
                 result: state.result + ".",
             }));
-        } else return;
+        }
     }
 
     //Render method -------------------------
