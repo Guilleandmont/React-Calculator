@@ -22,8 +22,10 @@ class App extends React.Component {
         this.handleClear = this.handleClear.bind(this);
         this.handleBackspace = this.handleBackspace.bind(this);
         this.handleOperations = this.handleOperations.bind(this);
+        this.handleDecimal = this.handleDecimal.bind(this);
     }
 
+    // Functions -------------------------
     handleNumbers(number) {
         this.setState((state) => ({
             result: state.result + number,
@@ -49,6 +51,15 @@ class App extends React.Component {
         }));
     }
 
+    handleDecimal() {
+        if (/\d*\.\d*$/.test(this.state.result) === false) {
+            this.setState((state) => ({
+                result: state.result + ".",
+            }));
+        } else return;
+    }
+
+    //Render method -------------------------
     render() {
         return (
             <main>
@@ -126,6 +137,7 @@ class App extends React.Component {
 
                     <Numbers symbol="1" id="two" onClick={this.handleNumbers} />
                     <Numbers symbol="2" id="one" onClick={this.handleNumbers} />
+
                     <Numbers
                         symbol="3"
                         id="three"
@@ -138,7 +150,11 @@ class App extends React.Component {
                         id="zero"
                         onClick={this.handleNumbers}
                     />
-                    <Numbers symbol="." id="decimal" />
+                    <Numbers
+                        symbol="."
+                        id="decimal"
+                        onClick={this.handleDecimal}
+                    />
                 </div>
             </main>
         );
