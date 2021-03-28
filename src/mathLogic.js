@@ -8,9 +8,13 @@ const config = {
 const math = create(all, config);
 
 const handleCalc = (expression) => {
-    const total = math.compile(expression);
-    const result = total.evaluate();
-    return math.format(result);
+    try {
+        const total = math.compile(expression);
+        const result = total.evaluate();
+        return math.format(result);
+    } catch {
+        return "Syntax Error";
+    }
 };
 
 console.log(handleCalc("0.1+0.2"));

@@ -12,6 +12,11 @@ import {
 } from "react-icons/fa";
 import handleCalc from "./mathLogic";
 
+const numberLengthRegex = /([\d.]+){13}$/;
+const decimalRegex = /\d*\.\d*$/;
+const zeroRegex = /\s0$|^0$/;
+const operationRegex = /\s[+/*]\s$/;
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -24,13 +29,18 @@ class App extends React.Component {
         this.handleBackspace = this.handleBackspace.bind(this);
         this.handleOperations = this.handleOperations.bind(this);
         this.handleDecimal = this.handleDecimal.bind(this);
+        this.handleEquals = this.handleEquals.bind(this);
     }
 
     // Functions -------------------------
     handleNumbers(number) {
-        this.setState((state) => ({
-            result: state.result + number,
-        }));
+        if (!numberLengthRegex.test(this.state.result)) {
+            this.setState((state) => ({
+                result: !zeroRegex.test(state.result)
+                    ? state.result + number
+                    : state.result,
+            }));
+        }
     }
 
     handleClear() {
@@ -48,16 +58,25 @@ class App extends React.Component {
 
     handleOperations(operation) {
         this.setState((state) => ({
-            result: state.result + operation,
+            result: !operationRegex.test(state.result)
+                ? state.result + operation
+                : state.result,
         }));
     }
 
     handleDecimal() {
-        if (/\d*\.\d*$/.test(this.state.result) === false) {
+        if (decimalRegex.test(this.state.result) === false) {
             this.setState((state) => ({
                 result: state.result + ".",
             }));
         }
+    }
+
+    handleEquals() {
+        this.setState((state) => ({
+            operation: state.result,
+            result: handleCalc(state.result),
+        }));
     }
 
     //Render method -------------------------
@@ -145,7 +164,11 @@ class App extends React.Component {
                         onClick={this.handleNumbers}
                     />
 
-                    <Operations symbol={<FaEquals />} id="equals" />
+                    <Operations
+                        symbol={<FaEquals />}
+                        id="equals"
+                        onClick={this.handleEquals}
+                    />
                     <Numbers
                         symbol="0"
                         id="zero"
