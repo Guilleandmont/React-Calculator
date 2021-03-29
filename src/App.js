@@ -12,9 +12,9 @@ import {
 } from "react-icons/fa";
 import handleCalc from "./mathLogic";
 
-const numberLengthRegex = /([\d.]+){13}$/;
-const decimalRegex = /\d*\.\d*$/;
-const zeroRegex = /\s0$|^0$/;
+const numberLengthRegex = /([\d.]+){13}$/; //to limit the length of numbers
+const decimalRegex = /\d*\.\d*$/; //to prevent more than one decimal point per number
+const zeroRegex = /\s0$|^0$/; //to prevent repeated zeros at the beginning of a number
 const operationRegex = /\s[+/*]\s$/;
 
 class App extends React.Component {
@@ -58,9 +58,9 @@ class App extends React.Component {
 
     handleOperations(operation) {
         this.setState((state) => ({
-            result: !operationRegex.test(state.result)
-                ? state.result + operation
-                : state.result,
+            result: operationRegex.test(state.result)
+                ? state.result.replace(operationRegex, operation)
+                : state.result + operation,
         }));
     }
 
