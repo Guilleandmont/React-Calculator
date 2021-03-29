@@ -14,8 +14,8 @@ import handleCalc from "./mathLogic";
 
 const numberLengthRegex = /([\d.]+){13}$/; //to limit the length of numbers
 const decimalRegex = /\d*\.\d*$/; //to prevent more than one decimal point per number
-const zeroRegex = /\s0$|^0$/; //to prevent repeated zeros at the beginning of a number
-const operationRegex = /\s[+/*]\s$/;
+const zeroRegex = /[+/*-]0$|^0$/; //to prevent repeated zeros at the beginning of a number
+const operationRegex = /[+/*-]+$/;
 
 class App extends React.Component {
     constructor(props) {
@@ -58,9 +58,12 @@ class App extends React.Component {
 
     handleOperations(operation) {
         this.setState((state) => ({
-            result: operationRegex.test(state.result)
-                ? state.result.replace(operationRegex, operation)
-                : state.result + operation,
+            result:
+                operation === "-"
+                    ? state.result + operation
+                    : operationRegex.test(state.result)
+                    ? state.result.replace(operationRegex, operation)
+                    : state.result + operation,
         }));
     }
 
@@ -103,13 +106,13 @@ class App extends React.Component {
                     <Operations
                         symbol={<FaDivide />}
                         id="divide"
-                        operation=" / "
+                        operation="/"
                         onClick={this.handleOperations}
                     />
                     <Operations
                         symbol={<FaTimes />}
                         id="multiply"
-                        operation=" * "
+                        operation="*"
                         onClick={this.handleOperations}
                     />
 
@@ -132,7 +135,7 @@ class App extends React.Component {
                     <Operations
                         symbol={<FaMinus />}
                         id="substract"
-                        operation=" - "
+                        operation="-"
                         onClick={this.handleOperations}
                     />
 
@@ -151,12 +154,12 @@ class App extends React.Component {
                     <Operations
                         symbol={<FaPlus />}
                         id="add"
-                        operation=" + "
+                        operation="+"
                         onClick={this.handleOperations}
                     />
 
-                    <Numbers symbol="1" id="two" onClick={this.handleNumbers} />
-                    <Numbers symbol="2" id="one" onClick={this.handleNumbers} />
+                    <Numbers symbol="1" id="one" onClick={this.handleNumbers} />
+                    <Numbers symbol="2" id="two" onClick={this.handleNumbers} />
 
                     <Numbers
                         symbol="3"
